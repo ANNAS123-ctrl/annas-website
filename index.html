@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Annas | Personal Website</title>
+
+  <!-- ================= CSS ================= -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      color: white;
+      min-height: 100vh;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(90deg, #43cea2, #185a9d);
+      padding: 70px 20px;
+      text-align: center;
+      color: black;
+      font-weight: bold;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+
+    /* CARD */
+    .card {
+      background: rgba(0, 0, 0, 0.65);
+      border-radius: 22px;
+      padding: 35px;
+      margin-bottom: 35px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s ease;
+    }
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card h1,
+    .card h2 {
+      margin-bottom: 15px;
+    }
+
+    .card p {
+      opacity: 0.9;
+      line-height: 1.7;
+    }
+
+    /* BUTTON */
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 32px;
+      background: linear-gradient(90deg, #4facfe, #00f2fe);
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 40px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+    }
+
+    .btn.clicked {
+      transform: scale(0.95);
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 25px;
+      opacity: 0.85;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1>Building cool things on the web 🚀</h1>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="container">
+<div class="card">
+  <h2>🎮 My Roblox Game</h2>
+
+  <p>
+    <strong>Game Type:</strong> Animal Collection & Trading Game<br><br>
+
+    <strong>About the Game:</strong><br>
+    Players collect animals, trade with others, and participate in special events.
+    The game focuses on rarity, strategy, and limited-time events.
+    <br><br>
+
+    <strong>Main Features:</strong><br>
+    🐾 Animal collection system<br>
+    🔁 Trading system with limits<br>
+    ❄️ Winter Event with Snowflakes & Candy Canes<br>
+    🎄 Christmas-exclusive animals and mutations(on december 25 don't miss)<br>
+    🎯 Rarity system: Common, Rare, Legendary, Mythic, Secret
+    <br><br>
+
+    <strong>Current Status:</strong><br>
+    🚧 In Development (Active Updates)
+    <br><br>
+
+    <strong>Platform:</strong><br>
+    Roblox
+  </p>
+</div>
+    <!-- ABOUT -->
+    <div class="card">
+      <h1>Hi, I’m Annas 👋</h1>
+      <p>
+        I’m learning web development and game design.<br>
+        This website is my first step into coding.
+      </p>
+
+      <a href="#projects" class="btn">View My Projects</a>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="card" id="projects">
+      <h2>Projects</h2>
+      <p>
+        🌐 <strong>Personal Website</strong> – My first responsive website (Live)<br><br>
+        ❄️ <strong>Roblox Game</strong> – Winter Event System (In Progress)<br><br>
+        🎮 <strong>Roblox Game</strong> – Work in Progress
+      </p>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    © <span id="year"></span> Annas | Built with HTML, CSS & JavaScript
+  </footer>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: "smooth" });
+        }
+      });
+    });
+
+    // Scroll reveal animation
+    const cards = document.querySelectorAll('.card');
+
+    function revealCards() {
+      const triggerPoint = window.innerHeight * 0.85;
+      cards.forEach(card => {
+        if (card.getBoundingClientRect().top < triggerPoint) {
+          card.classList.add('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealCards);
+    revealCards();
+
+    // Button click effect
+    document.querySelectorAll('.btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.add('clicked');
+        setTimeout(() => btn.classList.remove('clicked'), 200);
+      });
+    });
+
+    // Auto update year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
